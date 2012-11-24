@@ -335,6 +335,7 @@ module Fog
             end
           else
             # If no template volume was given, let's create our own volume
+            options[:pool_name] = volume_pool_name if volume_pool_name
             options[:format_type] = volume_format_type if volume_format_type
             options[:capacity]    = volume_capacity    if volume_capacity
             options[:allocation]  = volume_allocation  if volume_allocation
@@ -360,7 +361,7 @@ module Fog
           {
             :persistent             => true,
             :cpus                   => 1,
-            :memory_size            => 256 *1024,
+            :memory_size            => 256*1024,
             :name                   => randomized_name,
             :os_type                => "hvm",
             :arch                   => "x86_64",
